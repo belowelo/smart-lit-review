@@ -31,5 +31,7 @@ i wouldn't use this as your primary lit review tool, but this works great as a s
   | 3: other search results | a list of every other paper that appeared in the search, by title. |
 
   ## disclosure
-  the creation of this tool was LLM-assisted (what isn't nowadays, really :/) and is not intended for commercial distribution or use! i used my institution's LLM subscription with the intention of creating a reusable script to replace the usecases of LLM by some scholars in my department in order to minimize dependency and optimize usage overall.
+  the creation of this tool was LLM-assisted (what isn't nowadays, really :/) and is not intended for commercial distribution or use! 
+  i used my institution's LLM subscription with the intention of creating a reusable script to replace the usecases of LLM by some scholars in my department in order to minimize dependency and optimize usage overall.
+  
   as such, this tool contains jank, but should be enough to support the work of early-career scholars and students during their second-pass lit review.
