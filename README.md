@@ -6,16 +6,18 @@ this tool uses the semantic scholar API to fetch titles, abstracts, and semantic
 i wouldn't use this as your primary lit review tool, but this works great as a secondary layer to catch things that you might have missed! 
 simply download both files, place them in a clean folder, then run 'start here!.bat'!
 
-  ## input info
+
+
+  ## this tool takes...
   1. your title
   2. your prospective keywords
   3. your abstract
   4. target venues
   5. editorial board of target venues
   6. additional search terms
-  7. DOIs of papers you already know you'll cite!
+  7. dois of papers you already know you'll cite
  
-  ## output tiers
+  ## ...and outputs the following in a markdown file:
 
   | tier | meaning |
   |------|---------|
