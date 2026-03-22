@@ -4,9 +4,12 @@ a batch tool to automate your lit review from title + abstract + keywords!
 
 this tool uses the semantic scholar API to fetch titles, abstracts, and semantic scholar pages of publications relevant to your paper, organizing them into different tier by order of importance.
 i wouldn't use this as your primary lit review tool, but this works great as a secondary layer to catch things that you might have missed! 
-simply download both files, place them in a clean folder, then run 'start here!.bat'!
 
-
+  ## setup
+  1. install python 3.8+
+  2. run `pip install requests pyyaml`
+  3. grab a free API key at https://www.semanticscholar.org/product/api#api-key
+  4. place both start here.bat and lit-review.py in a fresh directory, and run start here.bat!
 
   ## this tool takes...
   1. your title
