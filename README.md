@@ -22,7 +22,7 @@ simply download both files, place them in a clean folder, then run 'start here!.
   | tier | meaning |
   |------|---------|
   | seed | papers you provided by DOI |
-  | 0 | must reads | published in your target venue or by editorial board members |
-  | 1 | important papers | appeared in 3+ searches, or 2+ with high citations |
-  | 2 | check-worthy abstracts | appeared in 2+ searches |
-  | 3 | other search results | a list of every other paper that appeared in the search, by title. |
+  | 0: must reads | published in your target venue or by editorial board members |
+  | 1: important papers | appeared in 3+ searches, or 2+ with high citations |
+  | 2: check-worthy abstracts | appeared in 2+ searches |
+  | 3: other search results | a list of every other paper that appeared in the search, by title. |
