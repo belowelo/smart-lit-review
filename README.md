@@ -29,3 +29,6 @@ i wouldn't use this as your primary lit review tool, but this works great as a s
   | 1: important papers | appeared in 3+ searches, or 2+ with high citations |
   | 2: check-worthy abstracts | appeared in 2+ searches |
   | 3: other search results | a list of every other paper that appeared in the search, by title. |
+
+  ## disclosure
+  the creation of this tool was LLM-assisted (what isn't nowadays, really :/) and is not intended for institutional use! as such, this tool contains jank, but should be enough to support early-career scholars and students during their second-pass lit review.
