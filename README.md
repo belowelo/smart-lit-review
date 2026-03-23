@@ -43,7 +43,7 @@ AS semantic scholar does have several coverage gaps (in the humanities, especial
   these search results are then tiered/internally ordered (within the tiers) via overlap count, citation count, board membership of authors, and recency.
 
   ## disclosure
-  the creation of this tool was LLM-assisted (what isn't nowadays, really :/) and is not intended for commercial distribution or use! 
+  the creation of this tool (mostly python-scripting) was LLM-assisted (what isn't nowadays, really :/) and is not intended for commercial distribution or use! 
   
   i utilized my former institution's LLM subscription with the intention of creating a reusable script to replace the usecases of LLM by some scholars in my department in order to minimize dependency and optimize usage overall. 
   
