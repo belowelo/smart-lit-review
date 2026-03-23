@@ -20,6 +20,8 @@ AS semantic scholar does have several coverage gaps (in the humanities, especial
  
   ## ...and outputs the following in a markdown file:
 
+  title, search overlap score, tier rating, author, venue, doi, abstract:  
+
   | tier | meaning |
   |------|---------|
   | seed | papers you provided by DOI |
@@ -27,23 +29,6 @@ AS semantic scholar does have several coverage gaps (in the humanities, especial
   | 1: important papers | appeared in 3+ searches, or 2+ with high citations |
   | 2: check-worthy abstracts | appeared in 2+ searches |
   | 3: other search results | a list of every other paper that appeared in the search, by title. |
-
-  ## output data looks like this:
-
-  "TITLE" [OVERLAP SCORE] [TIER]`
-  
-  **Author**
-  
-  *Venue*
-  
-  Citations | Fields
-  
-  DOI
-  
-  Semantic Scholar Link
-  
-
-  Abstract
   
   ## methodology
   in order to replicate the results of systematic reading/lit review methodologies, search results are tiered via multi-pass overlap under the assumption that a text will be more relevant if it appears multiple times across various independently-construed search angles.
