@@ -18,9 +18,11 @@ AS semantic scholar does have several coverage gaps (in the humanities, especial
   6. additional search terms
   7. dois of papers you already know you'll cite
  
-  ## ...and outputs the following in a markdown file:
+  ## ...and outputs the following in a simple markdown file:
 
-  title, search overlap score, tier rating, author, venue, doi, abstract:  
+  **title; # of overlapping search results; importance tier score; author; venue; doi; abstract.**
+  
+  the tiering logic is quite simple: 
 
   | tier | meaning |
   |------|---------|
