@@ -3,7 +3,7 @@
 a batch tool to automate your lit review from title + abstract + keywords!
 
 this tool uses the semantic scholar API to fetch titles, abstracts, and semantic scholar pages of publications relevant to your paper, organizing them into different tier by order of importance.
-i wouldn't use this as your primary lit review tool, but this works great as a secondary layer to catch things that you might have missed! 
+AS semantic scholar does have several coverage gaps (in the humanities, especially!) i wouldn't use this as your primary lit review tool, but this works great as a secondary layer to catch things that you might have missed!  
 
   ## setup
   1. install python 3.8+
@@ -40,13 +40,13 @@ i wouldn't use this as your primary lit review tool, but this works great as a s
   - your target venues and the relevant board members of said target venue + your top 3 keywords (2022+)
   - any additional search terms you might specify
   - a broader recency sweep of the top 3 keywords (2024+) 
-  - citation-chain-traversal from the bibliography of seeded publications.
+  - citation-chain-traversal from the bibliography/forward citations of seeded publications.
 
   these search results are then tiered/internally ordered (within the tiers) via overlap count, citation count, board membership of authors, and recency.
 
   ## disclosure
   the creation of this tool was LLM-assisted (what isn't nowadays, really :/) and is not intended for commercial distribution or use! 
   
-  i used my institution's LLM subscription with the intention of creating a reusable script to replace the usecases of LLM by some scholars in my department in order to minimize dependency and optimize usage overall.
+  i utilized my former institution's LLM subscription with the intention of creating a reusable script to replace the usecases of LLM by some scholars in my department in order to minimize dependency and optimize usage overall. 
   
   as such, this tool contains jank, but should be enough to support the work of early-career scholars and students during their second-pass lit review.
