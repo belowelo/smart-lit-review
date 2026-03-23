@@ -43,8 +43,8 @@ AS semantic scholar does have several coverage gaps (in the humanities, especial
   these search results are then tiered/internally ordered (within the tiers) via overlap count, citation count, board membership of authors, and recency.
 
   ## disclosure
-  the creation of this tool (mostly python-scripting) was LLM-assisted (what isn't nowadays, really :/) and is not intended for commercial distribution or use! 
+  the creation of this tool (mostly python scripting) was LLM-assisted (what isn't nowadays, really :/) and is not intended for commercial distribution.
+  however, the actual python script **contains NO machine-learning technology** whatsoever; just API calling, text processing through python and YAML, and regex. (semantic scholar itself indexes papers utilizing embeddings.) 
   
-  i utilized my former institution's LLM subscription with the intention of creating a reusable script to replace the usecases of LLM by some scholars in my department in order to minimize dependency and optimize usage overall. 
-  
-  as such, this tool contains jank, but should be enough to support the work of early-career scholars and students during their second-pass lit review.
+  the intention of this tool was to create creating a reusable search script to _replace_ LLM usage by scholars and minimize dependency overall.
+  as such, this tool contains jank, but should be enough to support the work of early-career scholars and students during their second-pass lit review. **this is a checking/verification tool, not a research tool!**
