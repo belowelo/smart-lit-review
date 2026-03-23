@@ -30,6 +30,20 @@ i wouldn't use this as your primary lit review tool, but this works great as a s
   | 2: check-worthy abstracts | appeared in 2+ searches |
   | 3: other search results | a list of every other paper that appeared in the search, by title. |
 
+  ## methodology
+  in order to replicate the results of systematic reading/lit review methodologies, search results are tiered via multi-pass overlap under the assumption that a text will be more relevant if it appears multiple times across various independently-construed search angles.
+ 
+  these search passes include:
+  - your title, verbatim
+  - pairwise combinations of your keywords, ordered by importance (A, B, C, D -> AB, AC, AD, BC, BD, etc.)
+  - regex extractions from your abstract (quoted terms, capitalized proper nouns)
+  - your target venues and the relevant board members of said target venue + your top 3 keywords (2022+)
+  - any additional search terms you might specify
+  - a broader recency sweep of the top 3 keywords (2024+) 
+  - citation-chain-traversal from the bibliography of seeded publications.
+
+  these search results are then tiered/internally ordered (within the tiers) via overlap count, citation count, board membership of authors, and recency.
+
   ## disclosure
   the creation of this tool was LLM-assisted (what isn't nowadays, really :/) and is not intended for commercial distribution or use! 
   
