@@ -28,6 +28,17 @@ AS semantic scholar does have several coverage gaps (in the humanities, especial
   | 2: check-worthy abstracts | appeared in 2+ searches |
   | 3: other search results | a list of every other paper that appeared in the search, by title. |
 
+  ## output data looks like this:
+
+  "TITLE" [OVERLAP SCORE] [TIER]`
+  **Author**
+  *Venue*
+  Citations | Fields
+  DOI
+  Semantic Scholar Link
+
+  Abstract
+  
   ## methodology
   in order to replicate the results of systematic reading/lit review methodologies, search results are tiered via multi-pass overlap under the assumption that a text will be more relevant if it appears multiple times across various independently-construed search angles.
  
