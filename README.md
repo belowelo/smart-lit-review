@@ -40,7 +40,7 @@ AS semantic scholar does have several coverage gaps (in the humanities, especial
   - your target venues and the relevant board members of said target venue + your top 3 keywords (2022+)
   - any additional search terms you might specify
   - a broader recency sweep of the top 3 keywords (2024+) 
-  - citation-chain-traversal from the bibliography/forward citations of seeded publications.
+  - citation-chain-traversal from the bibliography/forward citations of seeded and tier 1+ publications.
 
   these search results are then tiered/internally ordered (within the tiers) via overlap count, citation count, board membership of authors, and recency.
 
