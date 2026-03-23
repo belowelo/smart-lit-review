@@ -53,4 +53,4 @@ AS semantic scholar does have several coverage gaps (in the humanities, especial
   
   the intention of this tool was to create creating a reusable search script to _replace_ LLM usage by early-career scholars and minimize dependency overall.
   
-  as such, this tool contains jank, but should be enough to support the work of early-career scholars and students during their second-pass lit review. **this is a checking/verification tool, not a research tool!**
+  as such, this tool contains jank, but should be enough to support the work of early-career scholars and students during their second-pass lit review. as you might be able to tell from the tool requiring a fully-written abstract and keywords to function properly, **this tool is intended moreso to be a checking/verification tool, not a primary research tool!**
