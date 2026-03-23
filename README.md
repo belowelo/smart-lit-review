@@ -49,7 +49,7 @@ AS semantic scholar does have several coverage gaps (in the humanities, especial
   ## disclosure
   the creation of this tool (mostly python scripting) was LLM-assisted (what isn't nowadays, really :/) and is not intended for commercial distribution.
   
-  however, the actual python script **contains NO machine-learning technology** whatsoever; just API calling, text processing through python and YAML, and regex. (semantic scholar itself indexes papers utilizing embeddings, though.) 
+  however, the actual python script **contains NO machine-learning technology** whatsoever; just API calling, text processing through python and YAML, and regex to automate searching/browsing in bulk. again, **this tool does NOT write the lit review for you**. (semantic scholar itself indexes papers utilizing embeddings, though.) 
   
   the intention of this tool was to create creating a reusable search script to _replace_ LLM usage by early-career scholars and minimize dependency overall.
   
