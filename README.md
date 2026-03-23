@@ -6,10 +6,8 @@ this tool uses the semantic scholar API to fetch titles, abstracts, and semantic
 AS semantic scholar does have several coverage gaps (in the humanities, especially!) i wouldn't use this as your primary lit review tool, but this works great as a secondary layer to catch things that you might have missed!  
 
   ## setup
-  1. install python 3.8+
-  2. run `pip install requests pyyaml`
-  3. grab a free API key at https://www.semanticscholar.org/product/api#api-key
-  4. place both start here.bat and lit-review.py in a fresh directory, and run start here.bat!
+  1. grab a free API key at https://www.semanticscholar.org/product/api#api-key (or email me, if you know me personally)
+  2. place both start here.bat and lit-review.py in a fresh directory, and run start here.bat!
 
   ## this tool takes...
   1. your title
