@@ -40,9 +40,11 @@ from itertools import combinations
 # Fix Windows console encoding for Korean/special characters
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
-# --- Semantic Scholar API ---
-CONFIG_PATH = Path(__file__).parent / ".litreview-config"
+# --- API config ---
+CONFIG_DIR = Path(__file__).parent
+CONFIG_PATH = CONFIG_DIR / ".litreview-config"
 BASE_URL = "https://api.semanticscholar.org/graph/v1/paper/search"
+FIELDS = "title,abstract,authors,year,citationCount,url,publicationTypes,journal,fieldsOfStudy,externalIds"
 
 
 def load_api_key():
@@ -58,7 +60,6 @@ def save_api_key(key):
 
 
 API_KEY = load_api_key()
-FIELDS = "title,abstract,authors,year,citationCount,url,publicationTypes,journal,fieldsOfStudy,externalIds"
 
 
 
@@ -281,6 +282,49 @@ def fetch_references(paper_id):
         time.sleep(0.15)
 
     return all_refs
+
+
+def fetch_citations(paper_id):
+    """Fetch papers that cite this paper (forward chasing) via Semantic Scholar."""
+    url = f"https://api.semanticscholar.org/graph/v1/paper/{paper_id}/citations"
+    headers = {"x-api-key": API_KEY} if API_KEY else {}
+    params = {"fields": FIELDS, "limit": 500}
+    all_cites = []
+    offset = 0
+
+    while True:
+        params["offset"] = offset
+        try:
+            resp = requests.get(url, params=params, headers=headers, timeout=30)
+        except requests.RequestException as e:
+            print(f"      Request error: {e}")
+            break
+
+        if resp.status_code == 429:
+            print(f"      Rate limited — waiting 5s...")
+            time.sleep(5)
+            continue
+
+        if resp.status_code != 200:
+            print(f"      Error {resp.status_code}")
+            break
+
+        data = resp.json()
+        cites = data.get("data", [])
+        if not cites:
+            break
+
+        for cite in cites:
+            citing = cite.get("citingPaper")
+            if citing and citing.get("paperId"):
+                all_cites.append(citing)
+
+        offset += len(cites)
+        if offset >= data.get("total", 0):
+            break
+        time.sleep(0.15)
+
+    return all_cites
 
 
 def search_pass(query, limit=30, year_range=None):
@@ -567,8 +611,8 @@ def run_review(config, pass_filter=None):
                 print(f" not found on Semantic Scholar")
             time.sleep(0.3)
 
-    # --- Citation chase: fetch bibliographies of 3+ overlap papers + seed papers ---
-    # Only chase papers that appeared in 3+ search passes (core field papers),
+    # --- Citation chase: fetch bibliographies of Tier 1 papers + seed papers ---
+    # Chase papers that qualify as Tier 1 (3+ overlap, or 2+ with 50+ cites),
     # PLUS any seed papers regardless of overlap.
     # Ref overlap is tracked SEPARATELY — it doesn't inflate tier assignment.
     paper_ref_count = {}  # pid → number of chased bibliographies it appeared in
@@ -576,12 +620,14 @@ def run_review(config, pass_filter=None):
     chase_candidates = []
     for pid, paper in paper_registry.items():
         oc = len(paper_passes.get(pid, []))
-        if oc >= 3 or pid in seed_pids:
+        citations = paper.get("citationCount") or 0
+        is_tier1 = oc >= 3 or (oc >= 2 and citations >= 50)
+        if is_tier1 or pid in seed_pids:
             chase_candidates.append((pid, paper, oc))
 
     if chase_candidates:
         chase_candidates.sort(key=lambda x: (x[2], x[1].get("citationCount") or 0), reverse=True)
-        print(f"\n  --- Citation chase: fetching bibliographies of {len(chase_candidates)} papers (3+ overlap) ---")
+        print(f"\n  --- Backward chase: fetching bibliographies of {len(chase_candidates)} papers (Tier 1 + seeds) ---")
         for pid, paper, oc in chase_candidates:
             ptitle = (paper.get("title") or "Untitled")[:60]
             print(f"    Refs: {ptitle}...", end="", flush=True)
@@ -603,6 +649,31 @@ def run_review(config, pass_filter=None):
                     existing_refs += 1
             total_unique += new_refs
             print(f" {len(refs)} refs → {new_refs} new, {existing_refs} already known")
+            time.sleep(0.3)
+        print()
+
+    # --- Forward citation chase: fetch citing papers of 3+ overlap papers + seeds ---
+    if chase_candidates:
+        print(f"  --- Forward chase: fetching citations of {len(chase_candidates)} papers (Tier 1 + seeds) ---")
+        for pid, paper, oc in chase_candidates:
+            ptitle = (paper.get("title") or "Untitled")[:60]
+            print(f"    Cited by: {ptitle}...", end="", flush=True)
+            cites = fetch_citations(pid)
+            new_cites = 0
+            existing_cites = 0
+            for cite in cites:
+                cpid = cite.get("paperId")
+                if not cpid:
+                    continue
+                paper_ref_count[cpid] = paper_ref_count.get(cpid, 0) + 1
+                if cpid not in paper_registry:
+                    paper_registry[cpid] = cite
+                    paper_passes[cpid] = []
+                    new_cites += 1
+                else:
+                    existing_cites += 1
+            total_unique += new_cites
+            print(f" {len(cites)} citing → {new_cites} new, {existing_cites} already known")
             time.sleep(0.3)
         print()
 
@@ -752,8 +823,8 @@ def run_review(config, pass_filter=None):
 # Each key corresponds to a step in the wizard.
 STEP_INSTRUCTIONS = {
     "welcome": """
-=== smart lit review (semantic scholar) v0.1 ===
-this tool pulls abstracts and titles from semantic scholar to assist in your lit review! 
+=== smart lit review v0.2 ===
+this tool pulls abstracts and titles from academic databases to assist in your lit review!
 """,
 
     "title": """
@@ -914,7 +985,7 @@ def interactive_mode():
     global API_KEY
     if API_KEY:
         masked = API_KEY[:6] + "..." + API_KEY[-4:]
-        print(f"  API key: {masked}")
+        print(f"  Semantic Scholar API key: {masked}")
     else:
         print("  No Semantic Scholar API key found.")
         print("  Get one free at: https://www.semanticscholar.org/product/api#api-key")
