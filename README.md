@@ -31,11 +31,17 @@ AS semantic scholar does have several coverage gaps (in the humanities, especial
   ## output data looks like this:
 
   "TITLE" [OVERLAP SCORE] [TIER]`
+  
   **Author**
+  
   *Venue*
+  
   Citations | Fields
+  
   DOI
+  
   Semantic Scholar Link
+  
 
   Abstract
   
