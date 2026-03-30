@@ -47,10 +47,9 @@ AS semantic scholar does have several coverage gaps (in the humanities, especial
   these search results are then tiered/internally ordered (within the tiers) via overlap count, citation count, board membership of authors, and recency.
 
   ## disclosure
-  the creation of this tool (mostly python scripting) was LLM-assisted (what isn't nowadays, really :/) and is not intended for commercial distribution.
+  the creation of this tool (limited strictly to python scripting) was LLM-assisted and is not intended for commercial distribution. 
+  as such, this tool contains jank, but should be enough to support the work of early-career scholars and students during their second-pass lit review. as you might be able to tell from the tool requiring a fully written abstract and keywords to function properly, **this tool is intended moreso to be a checking/verification tool, not a primary research tool!**
   
   however, the actual python script **contains NO machine-learning technology** whatsoever; just API calling, text processing through python and YAML, and regex to automate searching/browsing in bulk. again, **this tool does NOT write the lit review for you**. (semantic scholar itself indexes papers utilizing embeddings, though.) 
   
-  the intention of this tool was to create creating a reusable search script to _replace_ LLM usage by early-career scholars and minimize dependency overall.
-  
-  as such, this tool contains jank, but should be enough to support the work of early-career scholars and students during their second-pass lit review. as you might be able to tell from the tool requiring a fully-written abstract and keywords to function properly, **this tool is intended moreso to be a checking/verification tool, not a primary research tool!**
+  the intention of this tool was to create creating a reusable search script to _reduce_ LLM usage by early-career scholars and minimize dependency overall. scholarship and literature review methodologies utilizing LLM-embedded summarization tools such as ellicit and semantic scholar have become commonplace, but a researcher unfamiliar with semantic embedding will have difficulty optimizing and targeting their search methods. this tool utilizes non-LLM tools to make this process more efficient, minimizing dummy searches while keeping the search net academically robust. 
